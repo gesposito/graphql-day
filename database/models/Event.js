@@ -3,5 +3,12 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
   });
 
+  Event.associate = (models) => {
+    Event.belongsToMany(models.User, { 
+      through: 'Attendees',
+      as: 'attendees'
+    });
+  };
+
   return Event;
 };

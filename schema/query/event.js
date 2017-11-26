@@ -10,8 +10,17 @@ const eventQuery = {
         id: { type: GraphQLString }
     },
     resolve: function (_, { id }, context) {
-        return context.db.Event.findById(id);
+        return context.db.Event.findById(id, {
+            include: [{ 
+                model: context.db.User,
+                as: "attendees",
+                through: {
+                    attributes: []
+                }
+            }]
+        });
     }
 }
 
 module.exports = eventQuery;
+
