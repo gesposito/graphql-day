@@ -1,5 +1,7 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLID, GraphQLString } = graphql;
+const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLString } = graphql;
+
+const userType = require("./user");
 
 // Define the Event type
 const eventType = new GraphQLObjectType({
@@ -7,6 +9,7 @@ const eventType = new GraphQLObjectType({
     fields: {
         id: { type: GraphQLID },
         name: { type: GraphQLString },
+        attendees: { type: new GraphQLList(userType) },
     }
 });
 
