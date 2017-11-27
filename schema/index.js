@@ -2,6 +2,7 @@ const graphql = require('graphql');
 const { GraphQLSchema, GraphQLObjectType } = graphql;
 
 const { event } = require('./query');
+const { eventMutation } = require('./mutation');
 
 // Define the Query type
 const queryType = new GraphQLObjectType({
@@ -11,6 +12,15 @@ const queryType = new GraphQLObjectType({
     }
 });
 
+// Define the Mutation type
+const mutationType = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        eventMutation,
+    }
+});
+
 module.exports = new graphql.GraphQLSchema({ 
-    query: queryType 
+    query: queryType,
+    mutation: mutationType
 });

@@ -8,7 +8,8 @@ const models = require('./database/models');
 const app = express();
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    context: {
+    context: {},
+    rootValue: {
         db: models
     },
     graphiql: true,
