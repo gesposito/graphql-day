@@ -18,6 +18,9 @@ const eventQuery = {
                     attributes: []
                 }
             }]
+        }).then((data) => {
+            // data.set("name", null)
+            return data;
         });
     }
 }

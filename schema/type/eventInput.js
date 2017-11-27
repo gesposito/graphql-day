@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString } = graphql;
+const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = graphql;
 
 const userType = require("./user");
 
@@ -7,7 +7,7 @@ const userType = require("./user");
 const eventInputType = new GraphQLObjectType({
     name: 'EventInput',
     fields: {
-        name: { type: GraphQLString },
+        name: { type: new GraphQLNonNull(GraphQLString) },
     }
 });
 
