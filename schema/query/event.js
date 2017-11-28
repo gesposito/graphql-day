@@ -9,7 +9,7 @@ const eventQuery = {
     args: {
         id: { type: GraphQLString }
     },
-    resolve: function (root, { id }, context) {
+    resolve: (root, { id }, context) => {
         return root.db.Event.findById(id, {
             include: [{
                 model: root.db.User,

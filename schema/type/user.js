@@ -1,6 +1,8 @@
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLID, GraphQLString } = graphql;
 
+const { github } = require('../../services');
+
 // Define the User type
 const userType = new GraphQLObjectType({
     name: 'User',
@@ -8,6 +10,10 @@ const userType = new GraphQLObjectType({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
         username: { type: GraphQLString },
+        location: {
+            type: GraphQLString,
+            resolve: (self) => github.getInfoBy(self.username)
+        }
     }
 });
 

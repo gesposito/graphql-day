@@ -10,7 +10,7 @@ const eventMutation = {
     args: {
         name: { type: GraphQLString }
     },
-    resolve: function (root, { name }, context) {
+    resolve: (root, { name }, context) => {
         return root.db.Event.create({
             name
         });
