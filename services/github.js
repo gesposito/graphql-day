@@ -3,6 +3,8 @@ const config = require('./config');
 
 const github = {
     getInfoBy(username) {
+        console.info(`Getting remote infos for ${username}`);
+        
         const query = `
             query location($username: String!) {
                 user(login: $username) {

@@ -9,19 +9,12 @@ const eventQuery = {
     args: {
         id: { type: GraphQLString }
     },
-    resolve: (root, { id }, context) => {
-        return root.db.Event.findById(id, {
-            include: [{
-                model: root.db.User,
-                as: "attendees",
-                through: {
-                    attributes: []
-                }
-            }]
-        }).then((data) => {
-            // data.set("name", null)
-            return data;
-        });
+    resolve: (root, { id }, { loaders }) => {
+        return loaders.event.load(id)
+            .then((data) => {
+                // data.set("name", null)
+                return data;
+            });
     }
 }
 

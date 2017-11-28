@@ -4,13 +4,16 @@ const graphqlHTTP = require('express-graphql');
 
 const schema = require("./schema");
 const models = require('./database/models');
+const loaders = require('./schema/loader');
 
 const app = express();
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    context: {},
+    context: {
+        loaders: loaders
+    },
     rootValue: {
-        db: models
+        db: models,
     },
     graphiql: true,
     pretty: true,
