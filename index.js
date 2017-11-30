@@ -15,8 +15,8 @@ app.use('/graphql', graphqlHTTP({
     rootValue: {
         db: models,
     },
-    graphiql: true,
-    pretty: true,
+    graphiql: process.env.NODE_ENV !== 'production',
+    pretty: process.env.NODE_ENV !== 'production',
 }));
 
 const port = 4000;
