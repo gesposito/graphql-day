@@ -1,19 +1,17 @@
 const graphql = require('graphql');
 const { GraphQLString } = graphql;
 
-const { eventInput } = require('../type');
+const { event, eventInput } = require('../type');
 
 const eventMutation = {
-    type: eventInput,
+    type: event,
     description: 'Create a new Event',
     // `args` describes the arguments that the `event` mutation accepts
     args: {
-        name: { type: GraphQLString }
+        input: { type: eventInput }
     },
-    resolve: (root, { name }, context) => {
-        return root.db.Event.create({
-            name
-        });
+    resolve: (root, { input }, context) => {
+        return root.db.Event.create(input);
     }
 }
 

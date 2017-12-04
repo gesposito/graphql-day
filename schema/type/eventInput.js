@@ -1,10 +1,8 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = graphql;
-
-const userType = require("./user");
+const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = graphql;
 
 // Define the EventInput type
-const eventInputType = new GraphQLObjectType({
+const eventInputType = new GraphQLInputObjectType({
     name: 'EventInput',
     fields: {
         name: { type: new GraphQLNonNull(GraphQLString) },
